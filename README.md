@@ -13,23 +13,6 @@ used
 
 ## Features
 
-### Unpacking/Spread Operator
-
-Unpacking will be the same as Python, using the `**`/`*` operators.
-
-Dict (object) unpacking will also be available by unpacking the names in an assignment. 
-the `as` keyword can be used to reassign to a different variable name. i.e.
-```python
-# foo, Hello as hello = **{"foo": "bar", "Hello": "World"} # NOT AVAILABLE
-myFunction( **{"foo": "bar", "Hello": "World"})
-
-one, two, three = *[1, 2, 3]
-myFunction(*[1, 2, 3])
-```
-> JavaScript spread assignment syntax `{}`/`[]` is very nice functionality, however, I 
-> do not want to use braces so carelessly. Object/Dict unpacking into variables will
-> not be allowed into the spec of this language (unless something better can be figured).
-
 ### Fancy-Features
 
 Features from Python are still present:
@@ -38,6 +21,25 @@ Features from Python are still present:
 * Operator overloading (`__+__`, `__*__`)
 * Generators/Iterables (`yield`)
 * Decorators/closures (`@decorator`)
+
+### Unpacking/Spread Operator
+
+Unpacking will be the same as Python, using the `**`/`*` operators.
+
+Dict (object) unpacking will also be available by unpacking the names in an assignment. 
+the `as` keyword can be used to reassign to a different variable name. i.e.
+```python
+# foo, Hello as hello = **{"foo": "bar", "Hello": "World"} # WOULD NOT BE AVAILABLE
+myFunction( **{"foo": "bar", "Hello": "World"})
+
+one, two, three = *[1, 2, 3]
+myFunction(*[1, 2, 3])
+```
+> JavaScript spread assignment syntax `{}`/`[]` is very nice functionality, however, I 
+> do not want to use braces so carelessly. 
+
+> Object/Dict unpacking will not be allowed into the spec of this language (unless something 
+> better can be figured).
 
 ### Annonymous Functions
 
