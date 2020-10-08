@@ -60,7 +60,6 @@ myFunction(*[1, 2, 3])
 ```
 > JavaScript spread assignment syntax `{}`/`[]` is very nice functionality, however, I 
 > do not want to use braces so carelessly. 
-
 > Object/Dict unpacking will not be allowed into the spec of this language (unless something 
 > better can be figured).
 
