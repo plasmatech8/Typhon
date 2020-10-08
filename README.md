@@ -17,10 +17,12 @@ used
 
 Features from Python are still present:
 * List/Dict/Set comprehension (`[x for x in myList]`, `{key: value for key, value in myDict.items()}`)
+    * Note: You cannot initialise an empty collection using list/dict/set comprehension due to type ambiguity
 * Context managers (`with`)
 * Operator overloading (`__+__`, `__*__`, `__>=__`)
 * Generators/Iterables (`yield`)
 * Decorators/closures (`@decorator`)
+* Chained comparisons (`1 < x <= 10`)
 
 ### Docstrings and Comments
 
@@ -109,7 +111,10 @@ attr str name = "Mark"
 attr int age;
 ```
 
-### Primitive Types and Collections
+> Static typing decreases effort required for input validation because there is no need for
+> type checking all the variables.
+
+### Basic Types and Collections
 
 Primitive types will be slightly more comprehensive than in Python. 
 
@@ -122,8 +127,8 @@ Some primitive types:
 
 Structs are also available. They are similar to C#. They are mutable value-types.
 
-Since this language is statically-typed, collections will need interfaces. Value-typed collection 
-variants may also be available.
+Since this language is statically-typed, collections will need interfaces (when not using the list/dict comprehension). 
+Immutable or value-typed collection variants may also be available.
 
 Some of the available collections:
 * tuple (e.g. `tuple<int, decimal>`, `(1, 2, 3)`)
@@ -133,8 +138,9 @@ Some of the available collections:
 * Set (e.g. `Set<int>();`, `{1, 2, 3}`)
 
 For dynamic typing, the `any` type may be used. Dynamic typing will be against recommendation, and it is
-recommended to check types and cast variables whenever possible. If this is not possible, then use 
-try-catch blocks. the `any` type is useful when dealing with JSON objects from a POST request.
+recommended to check types and cast variables whenever possible, or create multiple function definitions. 
+If this is not possible, then use try-catch blocks. The `any` type is useful when dealing with JSON objects 
+from a POST request.
 
 ### Public/Private Members
 
