@@ -22,6 +22,29 @@ Features from Python are still present:
 * Generators/Iterables (`yield`)
 * Decorators/closures (`@decorator`)
 
+### Docstrings and Comments
+
+Comments are defined as `#<comment>`. Multi-line comments not supported.
+
+Docstrings will be defined using double hash symbol `##<docstring>`. i.e.
+```python
+def myFunction(int a, float b, decimal c, Object d) -> List:
+  ## This is my function. It does very cool things.
+  ## 
+  ## args:
+  ##   a (int): is a number.
+  ##   b (float): is a float.
+  ##   c (Object): is an Object.
+  ##
+  ## returns:
+  ##   (List): a list of things.
+```
+
+> Docstrings below the function header (like Python) positions your function and docstring 
+> in a cleaner and easy to understand way. Using double hash '##' is better than multi-line 
+> strings (`"""Stuff"""` as used in Python) because it avoids annoyances of inconsistent
+> indentation, and deferentiates the docstrings from strings. 
+
 ### Unpacking/Spread Operator
 
 Unpacking will be the same as Python, using the `**`/`*` operators.
