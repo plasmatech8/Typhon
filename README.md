@@ -31,12 +31,12 @@ Docstrings will be defined using double hash symbol `##<docstring>`. i.e.
 def myFunction(int a, float b, decimal c, Object d) -> List:
   ## This is my function. It does very cool things.
   ## 
-  ## args:
+  ## Args:
   ##   a (int): is a number.
   ##   b (float): is a float.
   ##   c (Object): is an Object.
   ##
-  ## returns:
+  ## Returns:
   ##   (List): a list of things.
 ```
 
