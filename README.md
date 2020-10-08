@@ -16,9 +16,9 @@ used
 ### Fancy-Features
 
 Features from Python are still present:
-* List/Dict/Set comprehension (`[x for x in myList]`, `[]`)
+* List/Dict/Set comprehension (`[x for x in myList]`, `{key: value for key, value in myDict.items()}`)
 * Context managers (`with`)
-* Operator overloading (`__+__`, `__*__`)
+* Operator overloading (`__+__`, `__*__`, `__>=__`)
 * Generators/Iterables (`yield`)
 * Decorators/closures (`@decorator`)
 
@@ -103,6 +103,12 @@ Function definitions are defined like below:
 def myFunction(int a, float b, decimal c, Object d) -> List:
 ```
 
+Class/struct attributes are defined like below:
+```
+attr str name = "Mark"
+attr int age;
+```
+
 ### Primitive Types and Collections
 
 Primitive types will be slightly more comprehensive than in Python. 
@@ -125,6 +131,35 @@ Some of the available collections:
 * List (e.g. `List<int>();`, `[1, 2, 3]`)
 * Dict (e.g. `Dict<int>();`, `{"A": 1, "B": 2, "C": 3}`) [note: any type may be passed into the key]
 * Set (e.g. `Set<int>();`, `{1, 2, 3}`)
+
+For dynamic typing, the `any` type may be used. Dynamic typing will be against recommendation, and it is
+recommended to check types and cast variables whenever possible. If this is not possible, then use 
+try-catch blocks. the `any` type is useful when dealing with JSON objects from a POST request.
+
+### Public/Private Members
+
+Private members start with an underscore `_variable` and are not shown outside of the scope of the 
+module/function/class/struct.
+
+When a variable is just an underscore `_`, it will not conflict with the static typing system, and 
+will not actually assign any variable. (Used when a variable is not needed).
+
+### Keyword Syntaxes
+
+Similar to Python.
+
+With some changes:
+```python
+# (Possibly)
+for (i=0; i<10; i++):
+    pass
+    
+# Use 'catch' instead of 'except'
+try:
+    pass
+catch Exception as e:
+    raise e
+```
 
 ### Package Index (TyPi)
 
