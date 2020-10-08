@@ -47,10 +47,7 @@ def myFunction(int a, float b, decimal c, Object d) -> List:
 
 ### Unpacking/Spread Operator
 
-Unpacking will be the same as Python, using the `**`/`*` operators.
-
-Dict (object) unpacking will also be available by unpacking the names in an assignment. 
-the `as` keyword can be used to reassign to a different variable name. i.e.
+Unpacking will be the same as Python, using the `**`/`*` operators. i.e.
 ```python
 # foo, Hello as hello = **{"foo": "bar", "Hello": "World"} # WOULD NOT BE AVAILABLE
 myFunction( **{"foo": "bar", "Hello": "World"})
