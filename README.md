@@ -114,7 +114,7 @@ attr int age;
 > Static typing decreases effort required for input validation because there is no need for
 > type checking all the variables.
 
-### Basic Types and Collections
+### Basic Types 
 
 Primitive types will be slightly more comprehensive than in Python. 
 
@@ -123,9 +123,10 @@ Some primitive types:
 * float (e.g. `1.2`)
 * decimal (e.g. `1.2dec`)
 * double (e.g. `1.2doub`)
-* Promise
 
 Structs are also available. They are similar to C#. They are mutable value-types.
+
+### Collection Types
 
 Since this language is statically-typed, collections will need interfaces (when not using the list/dict comprehension). 
 Immutable or value-typed collection variants may also be available.
@@ -141,6 +142,16 @@ For dynamic typing, the `any` type may be used. Dynamic typing will be against r
 recommended to check types and cast variables whenever possible, or create multiple function definitions. 
 If this is not possible, then use try-catch blocks. The `any` type is useful when dealing with JSON objects 
 from a POST request.
+
+### Asyncronous Types
+
+Some types:
+* Promise
+* Stream
+
+These will implement `.get*()`, `.then()` and `.catch()` methods. Streams will also have `.onUpdate()`.
+
+The idea with streams, is that, we can potentially use it as a live-updating value.
 
 ### Public/Private Members
 
