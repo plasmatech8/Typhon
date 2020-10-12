@@ -47,6 +47,8 @@ def myFunction(int a, float b, decimal c, Object d) -> List:
 > strings (`"""Stuff"""` as used in Python) because it avoids annoyances of inconsistent
 > indentation, and deferentiates the docstrings from strings. 
 
+**on second thought, I might stick to `a: int` notation for type annotations**
+
 ### Unpacking/Spread Operator
 
 Unpacking will be the same as Python, using the `**`/`*` operators. i.e.
@@ -113,6 +115,8 @@ attr int age;
 
 > Static typing decreases effort required for input validation because there is no need for
 > type checking all the variables.
+
+**on second thought, I might stick to `name: str` notation for type annotations**
 
 ### Basic Types 
 
