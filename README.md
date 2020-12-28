@@ -71,25 +71,12 @@ indentation-based language, and arrow functions are less obvious for new-comers.
 
 ### Imports/Exports
 
-Imports are the same as Python. i.e. `import module from package`.
+Imports are the same as Python. i.e. `from package import module`.
 
 All attributes of a module will be exported by default. If the `export` keyword is present,
-then only those attributes will be exported. Alternatively, the `@export` decorator may be
-a good idea.
+then only those attributes will be exported. (e.g. `export my_function`)
 
-### Asyncrony/parallelism
-
-There will be no async-await syntax.
-
-Instead, function calls may be prefixed with `go` (i.e. `go myFunction()`), which will run the
-code in a seperate thread and returns a Promise. 
-
-These threads act the same way as Python multithreading - which is 
-not actually parallel, but switches between running Bytecode between each thread. When a 
-blocking operation/IO occurs, then the other threads will continue running. 
-
-This method will allow ability to easily distinguish between parallel/sequencial code, and makes
-it easy to switch between the two methods.
+It is also possible to add a `@export` decorator for a more convenient.
 
 ### Typing
 
@@ -125,8 +112,8 @@ Primitive types will be slightly more comprehensive than in Python.
 Some primitive types:
 * int (e.g. `1`)
 * float (e.g. `1.2`)
-* decimal (e.g. `1.2dec`)
-* double (e.g. `1.2doub`)
+* decimal (e.g. decimal('1.0') or posibly `1.2dec`)
+* double (e.g. double(1.34) or possibly `1.2doub`)
 
 Structs are also available. They are similar to C#. They are mutable value-types.
 
@@ -140,22 +127,20 @@ Some of the available collections:
 * array (e.g. `array<int>(shape=(2,2))`)
 * List (e.g. `List<int>();`, `[1, 2, 3]`)
 * Dict (e.g. `Dict<int>();`, `{"A": 1, "B": 2, "C": 3}`) [note: any type may be passed into the key]
-* Set (e.g. `Set<int>();`, `{1, 2, 3}`)
+* Set (e.g. `Set<int>()`, `{1, 2, 3}`)
 
-For dynamic typing, the `any` type may be used. Dynamic typing will be against recommendation, and it is
+For dynamic typing, the `Any` type may be used. Dynamic typing will be against recommendation, and it is
 recommended to check types and cast variables whenever possible, or create multiple function definitions. 
-If this is not possible, then use try-catch blocks. The `any` type is useful when dealing with JSON objects 
+If this is not possible, then use try-catch blocks. The `Any` type is useful when dealing with JSON objects 
 from a POST request.
 
-### Asyncronous Types
+### Generic Types 
 
-Some types:
-* Promise
-* Stream
-
-These will implement `.get*()`, `.then()` and `.catch()` methods. Streams will also have `.onUpdate()`.
-
-The idea with streams, is that, we can potentially use it as a live-updating value.
+Specified in a definition using `<T>` notation. e.g.
+```python
+class MyList<T>:
+   pass
+```
 
 ### Public/Private Members
 
@@ -165,6 +150,44 @@ module/function/class/struct.
 When a variable is just an underscore `_`, it will not conflict with the static typing system, and 
 will not actually assign any variable. (Used when a variable is not needed).
 
+### Asyncronous Types
+
+Pull-based (on-demand):
+* Promise<T>
+
+Push-based (on-recieve / event-based):
+* Stream<T>
+
+These will implement functions such as:
+* `.get()`
+* `.then()` 
+* `.catch()`
+* `.subscribe()`
+
+### Asyncronous Functions and Generators/Iterators Functions
+
+A function is asyncronous if it contains at least one `await` keyword. The return type must
+say: `-> Promise<MyReturnType>`.
+
+A function is a generator if it contains at least one `yield` keyword. The return type must
+say: `-> Generator<MyReturnType>`.
+
+> Note: Generator expressions are also possible `(x for x in range(10))`.
+
+If it contains at both `await` and `yield` keywords the return type must say: 
+`-> Generator<Promise<MyReturnType>>`. 
+
+> Note: This is different from `-> Stream<MyReturnType>` because generators are **pull-based** data 
+> while streams are **push-based** - Generators demand data and streams recieve data. 
+
+The `await` keyword should be used if you want to convert a function into an async function and
+the `next()` or `.get()` function should be used if you want to block the current thread.
+
+Operations that do not change the function definition:
+* `promise.get()` OR `promise.then(func)`
+* `next(generator)` OR `generator.__next__()` OR `for item in stream:`
+* `next(stream)` OR `stream.__next__()` OR `for item in stream:` OR `stream.subscribe(func)`
+
 ### Keyword Syntaxes
 
 Similar to Python.
@@ -173,6 +196,9 @@ With some changes:
 ```python
 # (Possibly)
 for (i=0; i<10; i++):
+    pass
+   
+for i from 0 to 10:
     pass
     
 # Use 'catch' instead of 'except'
