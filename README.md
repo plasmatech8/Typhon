@@ -192,16 +192,31 @@ Operations that do not change the function definition:
 
 Similar to Python.
 
-With some changes:
+Possible loop variants (not really necessary):
 ```python
-# (Possibly)
+# Possible
 for (i=0; i<10; i++):
     pass
    
-for i from 0 to 10:
+for i from 0 to 9:
+    pass
+
+for i in range([10, 20, 30]):
+    pass
+
+# Existing
+for i in range(0, 10):
     pass
     
-# Use 'catch' instead of 'except'
+for i in range(len([10, 20, 30])):
+   pass
+   
+for i, n in enumerate([10, 20, 30]):
+    pass
+```
+
+Possible exception handling refactor ('catch' instead of 'except'):
+``` 
 try:
     pass
 catch Exception as e:
