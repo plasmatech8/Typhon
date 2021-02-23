@@ -23,6 +23,9 @@ Features from Python are still present:
 * Generators/Iterables (`yield`)
 * Decorators/closures (`@decorator`)
 * Chained comparisons (`1 < x <= 10`)
+* Nullish fallback operator / nullish coalescing (`null ?? 'default_value'`) (a nullish operator)
+* Falsy fallback operator - maybe (`false or 'default_value'` or perhaps `false || 'default_value'`)
+* Optional chaining - stops with null if null (`myObject?.mySubObject?.myAttribute` or `myObject?mySubObject?myAttribute` or `myObject?.mySubObject?.myList?[]`) (a nullish operator)
 
 ### Docstrings and Comments
 
@@ -62,7 +65,7 @@ myFunction(*[1, 2, 3])
 > JavaScript spread assignment syntax `{}`/`[]` is very nice functionality, however, I 
 > do not want to use braces so carelessly. 
 > Object/Dict unpacking will not be allowed into the spec of this language (unless something 
-> better can be figured).
+> better can be figured). >>> why? idk - doesn't feel right. maybe it is fine?
 
 ### Annonymous Functions
 
