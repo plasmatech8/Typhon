@@ -127,7 +127,7 @@ Immutable or value-typed collection variants may also be available.
 
 Some of the available collections:
 * tuple (e.g. `tuple<int, decimal>`, `(1, 2, 3)`)
-* array (e.g. `array<int>(shape=(2,2))`)
+* array (e.g. `array<int>(shape=(2,2))`, `[1; 2; 3; 4]`, `[1, 2, 3; 4, 5, 6; 7, 8, 9]`) [fits better alongside tuples, but want to use square brackets, idk]
 * List (e.g. `List<int>();`, `[1, 2, 3]`)
 * Dict (e.g. `Dict<int>();`, `{"A": 1, "B": 2, "C": 3}`) [note: any type may be passed into the key]
 * Set (e.g. `Set<int>()`, `{1, 2, 3}`)
