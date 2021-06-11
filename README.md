@@ -243,3 +243,7 @@ Installation of project-package can potentially be done using the `typhon_packag
 > The goal is to have a strong and robust standard library and dependencies system.
 > It is noteworthy that supporting both JS and BIN will be a dificult task for the language.
 
+## To consider
+
+- Consider using `{}` brackets for code blocks for functions, but indentation `:` for control statements
+- Consider adding more type specifiers like `int in (0,10]` for additional compile-time validation
